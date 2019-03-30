@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/devicelistTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/device_list"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/devicelistProgressBarTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/devicelistTitle"
+        android:layout_centerHorizontal="true"
+        android:text="@string/refreshing"
+        android:padding="8dp"
+        android:textSize="18sp" />
+    
+    <ProgressBar
+        android:id="@+id/devicelistProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/devicelistProgressBarTitle"
+        android:layout_centerHorizontal="true"
+        android:padding="8dp"
+        style="@android:style/Widget.Holo.ProgressBar.Horizontal"
+        android:indeterminate="true" />
+    
+    <View
+        android:id="@+id/devicelistSeparator"
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:layout_below="@+id/devicelistProgressBar"
+        android:layout_centerHorizontal="true"
+        android:background="#eeeeee" />
+
+    <ListView
+        android:id="@+id/deviceList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/devicelistSeparator" />
+
+</RelativeLayout>

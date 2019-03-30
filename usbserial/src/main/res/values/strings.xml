@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Serial Port</string>
+    <string name="app_title">USB Serial</string>
+    <string name="refreshing">Refreshing...</string>
+    <string name="textBtnRTS">RTS - Request To Send</string>
+    <string name="textBtnDTR">DTR - Data Terminal Ready</string>
+</resources>
