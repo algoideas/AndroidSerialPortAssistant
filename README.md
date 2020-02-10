@@ -1,10 +1,7 @@
 ## AndroidSerialPort
 
 
-### 说明
-
 AndroidSerialPort (Android 串口助手)用于Android串口通信，工具不需要root，同时不需要NDK或者其他内核驱动，仅需采用 Android USB Host API, 工具现支持API Level 14+.
-
 
 项目基于github上以下项目，并在AndroidSerialPort基础上修改串口驱动部分，在此感谢以下项目作者。
 
@@ -15,6 +12,8 @@ AndroidSerialPort (Android 串口助手)用于Android串口通信，工具不需
 
 2.[Usb Serial for Android](https://github.com/mik3y/usb-serial-for-android)
     https://github.com/mik3y/usb-serial-for-android
+
+
 
 
 AndroidSerialPort 支持设置波特率、校验位、数据位、停止位.
@@ -41,7 +40,9 @@ AndroidSerialPort 支持设置波特率、校验位、数据位、停止位.
 
 ### APK下载
 
-[下载apk](https://github.com/algoideas/AndroidSerialPort/apk/串口助手1.2.apk)
+[下载apk]
+项目apk目录下下载最新编译的APK.
+
 <br>
 
 
