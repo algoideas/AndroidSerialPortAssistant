@@ -7,12 +7,15 @@ AndroidSerialPort 用于Android串口通信，工具不需要root，同时不需
 
 
 主要基于github上以下项目，并在AndroidSerialPort基础上修改串口驱动部分。
-<br>
-[Android Serial Port](https://github.com/Deemonser/AndroidSerialPort) 
-https://github.com/Deemonser/AndroidSerialPort
 
-[Usb Serial for Android](https://github.com/mik3y/usb-serial-for-android)
-https://github.com/mik3y/usb-serial-for-android
+
+<br>
+
+1.[Android Serial Port](https://github.com/Deemonser/AndroidSerialPort) 
+    https://github.com/Deemonser/AndroidSerialPort
+
+2.[Usb Serial for Android](https://github.com/mik3y/usb-serial-for-android)
+    https://github.com/mik3y/usb-serial-for-android
 
 
 AndroidSerialPort 支持设置波特率、校验位、数据位、停止位.
