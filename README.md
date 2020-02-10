@@ -1,49 +1,51 @@
 ## AndroidSerialPort
 
 
-### ˵��
+### 说明
 
-AndroidSerialPort ����Android����ͨ�ţ����߲���Ҫroot��ͬʱ����ҪNDK���������ں�������
-������� Android USB Host API, ������֧��API Level 14+.
+AndroidSerialPort 用于Android串口通信，工具不需要root，同时不需要NDK或者其他内核驱动，仅需采用 Android USB Host API, 工具现支持API Level 14+.
 
 
-��Ҫ����github��������Ŀ������AndroidSerialPort�������޸Ĵ����������֡�
+主要基于github上以下项目，并在AndroidSerialPort基础上修改串口驱动部分。
 <br>
-[AndroidSerialPort](https://github.com/Deemonser/AndroidSerialPort) 
+[Android Serial Port](https://github.com/Deemonser/AndroidSerialPort) 
+https://github.com/Deemonser/AndroidSerialPort
 
-[usb-serial-for-android](https://github.com/mik3y/usb-serial-for-android)
+[Usb Serial for Android](https://github.com/mik3y/usb-serial-for-android)
+https://github.com/mik3y/usb-serial-for-android
 
-AndroidSerialPort ֧�����ò����ʡ�У��λ������λ��ֹͣλ.
 
-����ͨ�ż��
+AndroidSerialPort 支持设置波特率、校验位、数据位、停止位.
 
-���нӿ���һ�ֿ��Խ���������CPU�Ĳ��������ַ�ת��Ϊ�����Ĵ������������ͳ�ȥ��ͬʱ�ɽ����ܵĴ���������ת��Ϊ���е������ַ�����CPU��������һ��������ֹ��ܵĵ�·�����ǳ�Ϊ���нӿڵ�·��
-����ͨ�ţ�Serial Communications����ָ����ͼ�����䣬ͨ�������ź��� �����ߡ������ߵȣ���λ���д������ݵ�һ��ͨѶ��ʽ��
-����ͨ���Ǽ�����зǳ�������ͨ�ŷ�ʽ������һЩ������ꡢ���̡���ӡ���ȶ���ͨ�����ڽ���ͨ�ŵġ�
-���ڵ�ͨ��һ��ʹ��3������ɣ��ֱ��ǵ��ߡ������ߣ�tx���������ߣ�rx����
+串口通信简介
 
-���ڵĲ���
+串行接口是一种可以将接受来自CPU的并行数据字符转换为连续的串行数据流发送出去，同时可将接受的串行数据流转换为并行的数据字符供给CPU的器件。一般完成这种功能的电路，我们称为串行接口电路。
+串口通信（Serial Communications）是指外设和计算机间，通过数据信号线 、地线、控制线等，按位进行传输数据的一种通讯方式。
+串口通信是计算机中非常常见的通信方式，比如一些有线鼠标、键盘、打印机等都是通过串口进行通信的。
+串口的通信一般使用3根线完成，分别是地线、发送线（tx）、接收线（rx）。
 
-�������������Ҫ�Ĳ����������豸���������ʡ���żУ��λ������λ��ֹͣλ��
-�豸���ƣ����ڵ����ơ�
-�����ʣ��������ʵĲ����������ʺʹ������ɷ��ȡ�
-У��λ���ڴ���ͨ����һ�ּ򵥵ļ����ʽ�������ּ����ʽ��ż���桢�ߺ͵ͣ�������У��λ��
-����λ��ͨ����ʵ������λ�Ĳ���
-ֹͣλ�����ڱ�ʾ�����������һλ��
-���м���λһ��Ĭ��λNONE������λһ��Ĭ��Ϊ8��ֹͣλĬ��Ϊ1��У��λ��Ϊ�˼������Ļ�����桢ż���в�λ������
-������������ͨ�ŵĶ˿ڣ���Щ��������ƥ�䣬�������˲��������շ���
+串口的参数
+
+串口中有五个重要的参数：串口设备名、波特率、奇偶校验位、数据位、停止位。
+设备名称：串口的名称。
+波特率：传输速率的参数，波特率和传输距离成反比。
+校验位：在串口通信中一种简单的检错方式，有四种检错方式：偶、奇、高和低，允许无校验位。
+数据位：通信中实际数据位的参数
+停止位：用于表示单个包的最后一位。
+其中检验位一般默认位NONE，数据位一般默认为8，停止位默认为1，校验位是为了减少误差的会根据奇、偶进行补位操作。
+对于两个进行通信的端口，这些参数必须匹配，否则两端不能正常收发。
 
 <br>
 
-### APK����
+### APK下载
 
-[����apk](https://github.com/algoideas/AndroidSerialPort/)
+[下载apk](https://github.com/algoideas/AndroidSerialPort/)
 <br>
 
 
 ### API
 
-#### �򿪴���
+#### 打开串口
 
 ```java
 
@@ -54,7 +56,7 @@ mUsbSerialPort.open(connection);
 ```
 <br>
 
-�������Ҫ���ø����������ʹ�����¹���setParameters����
+如果你需要设置更多参数，请使用以下构造setParameters函数
 
 ```java
 /**
@@ -74,16 +76,16 @@ mUsbSerialPort.open(connection);
             int baudRate, int dataBits, int stopBits, int parity) throws IOException;
 ```
 
-����λһ��Ĭ����0��NONE��������λһ��Ĭ��Ϊ8��ֹͣλĬ��Ϊ1��
+检验位一般默认是0（NONE），数据位一般默认为8，停止位默认为1。
 
 <br>
 
-#### ��д����
+#### 读写串口
 
-##### ������
+##### 读数据
 
 ```java
-// ��� Rxjava2 �����㴦���쳣
+// 配合 Rxjava2 ，方便处理异常
 mReceiveDisposable = Flowable.create((FlowableOnSubscribe<byte[]>) emitter -> {
     if (mUsbSerialPort != null) {
         int len = 0;
@@ -102,7 +104,7 @@ mReceiveDisposable = Flowable.create((FlowableOnSubscribe<byte[]>) emitter -> {
 ```
 
 
-##### д����
+##### 写数据
 
 ```java
 mUsbSerialPort.write(isHexSend ? ByteUtils.hexStringToBytes(s)
@@ -111,7 +113,7 @@ mUsbSerialPort.write(isHexSend ? ByteUtils.hexStringToBytes(s)
 
 <br>
 
-#### �رմ���
+#### 关闭串口
 
 ```java
  mUsbSerialPort.close();
